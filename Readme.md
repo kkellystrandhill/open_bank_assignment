@@ -14,3 +14,189 @@ You will need to test your API using Supertest and Jest, think about the scenari
 You should also attempt to mock the downstream call to OB branches endpoint using Axios-mock to intercept the call and give your defined response
 This code should be available in Git repo for review with good branching hygiene (relevant/meaningful commit messages so it’s easy to roll back code if necessary)
 ```
+
+## Create project
+
+# empty project commit
+
+```
+commit hash# eea7652bd6b46739af8beba5c95915472468c4c2
+```
+
+# project with task definition readme commit
+
+```
+commit hash# eea7652bd6b46739af8beba5c95915472468c4c2
+```
+
+## Test Open-banking V2.2 API is available
+
+```
+1. Using postman, execute API to see if data is returned.
+2. If data is returned idenify format of data.
+3. Save some/all data to use with supertest/jest
+```
+
+# Open-banking V2.2 returned data format
+
+```
+Object definition:
+
+meta: {
+        LastUpdated: 2022-03-28T14:27:34.354Z,
+        TotalResults: 807,
+        Agreement: Use of the APIs and any related data will be subject to the terms of the Open Licence and subject to terms and conditions,
+        License: https://www.openbanking.org.uk/open-licence,
+        TermsOfUse: https://www.openbanking.org.uk/terms
+    },
+    data: [
+        {
+            Brand: [
+                {
+                    BrandName:
+                    Branch: [
+                        {
+                            Identification:
+                            SequenceNumber:
+                            Name:
+                            Type:
+                            CustomerSegment: [],
+                            Availability: {
+                                StandardAvailability: {
+                                    Day: [
+                                        {
+                                            Name:
+                                            OpeningHours: [
+                                                {
+                                                    OpeningTime:
+                                                    ClosingTime:
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            ContactInfo: [
+                                {
+                                    ContactType:
+                                    ContactContent:
+                                }
+                            ],
+                            PostalAddress: {
+                                AddressLine: [],
+                                TownName:
+                                CountrySubDivision: [],
+                                Country:
+                                PostCode:
+                                GeoLocation: {
+                                    GeographicCoordinates: {
+                                        Latitude:
+                                        Longitude:
+                                    }
+                                }
+                            }
+                        },
+                }
+        }
+
+Sample data:
+    meta: {
+        LastUpdated: 2022-03-28T14:27:34.354Z,
+        TotalResults: 807,
+        Agreement: Use of the APIs and any related data will be subject to the terms of the Open Licence and subject to terms and conditions,
+        License: https://www.openbanking.org.uk/open-licence,
+        TermsOfUse: https://www.openbanking.org.uk/terms
+    },
+    data: [
+        {
+            Brand: [
+                {
+                    BrandName: Lloyds Bank,
+                    Branch: [
+                        {
+                            Identification: 77952700,
+                            SequenceNumber: 00,
+                            Name: STROOD,
+                            Type: Physical,
+                            CustomerSegment: [
+                                Personal,
+                                Business
+                            ],
+                            Availability: {
+                                StandardAvailability: {
+                                    Day: [
+                                        {
+                                            Name: Monday,
+                                            OpeningHours: [
+                                                {
+                                                    OpeningTime: 09:00,
+                                                    ClosingTime: 15:30
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            Name: Tuesday,
+                                            OpeningHours: [
+                                                {
+                                                    OpeningTime: 09:00,
+                                                    ClosingTime: 15:30
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            Name: Wednesday,
+                                            OpeningHours: [
+                                                {
+                                                    OpeningTime: 09:00,
+                                                    ClosingTime: 15:30
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            Name: Thursday,
+                                            OpeningHours: [
+                                                {
+                                                    OpeningTime: 09:00,
+                                                    ClosingTime: 15:30
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            Name: Friday,
+                                            OpeningHours: [
+                                                {
+                                                    OpeningTime: 09:00,
+                                                    ClosingTime: 15:30
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            ContactInfo: [
+                                {
+                                    ContactType: Phone,
+                                    ContactContent: +44-3456021997
+                                }
+                            ],
+                            PostalAddress: {
+                                AddressLine: [
+                                    129-131 HIGH STREET
+                                ],
+                                TownName: ROCHESTER,
+                                CountrySubDivision: [
+                                    KENT
+                                ],
+                                Country: GB,
+                                PostCode: ME2 4TW,
+                                GeoLocation: {
+                                    GeographicCoordinates: {
+                                        Latitude: 51.39584,
+                                        Longitude: 0.4939
+                                    }
+                                }
+                            }
+                        },
+                }
+        }
+```
