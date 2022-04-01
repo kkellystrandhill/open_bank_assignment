@@ -11,12 +11,22 @@ describe("Test get all branches with header.lbg-txn-branch-location = London GET
     expect(response.statusCode).toBe(200);
   });
 });
-describe("Test get all branches with header.lbg-txn-branch-location = London GET /", () => {
+describe("Test get all branches with header.lbg-txn-branch-location = null GET /", () => {
   jest.setTimeout(10000);
-  test("It should respond with all Watford branch data & fail as being compared against London branches!", async () => {
+  test("It should fail as null is not allowed", async () => {
     const response = await request(app)
       .get("/")
-      .set("lbg-txn-branch-location", "watforn");
+      .set("lbg-txn-branch-location", null);
+    expect(response.body).toEqual(branchesLondon());
+    expect(response.statusCode).toBe(200);
+  });
+});
+describe("Test get all branches with header.lbg-txn-branch-location = 999 GET /", () => {
+  jest.setTimeout(10000);
+  test("It should fail as must be string", async () => {
+    const response = await request(app)
+      .get("/")
+      .set("lbg-txn-branch-location", 999);
     expect(response.body).toEqual(branchesLondon());
     expect(response.statusCode).toBe(200);
   });

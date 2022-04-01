@@ -1,6 +1,9 @@
 import express from "express";
 import axios from "axios";
+import locationMiddleware from "./middleware/locationMiddleware.js";
+
 const app = express();
+app.use(locationMiddleware);
 
 app.get("/", async (req, res) => {
   let location,

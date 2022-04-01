@@ -23,222 +23,249 @@ This code should be available in Git repo for review with good branching hygiene
 commit hash# eea7652bd6b46739af8beba5c95915472468c4c2
 ```
 
-## Test Open-banking V2.2 API is available
+## Create ReadMe file with task definition
 
-# project with task definition readme commit
+# Tasks
 
-```
-commit hash# eea7652bd6b46739af8beba5c95915472468c4c2
-```
-
-# tasks
+1. Create ReadMe file with task definition
 
 ```
+
+## Test open banking availability and if available, update readme.md with retured data object definition and sample data for testing
+
+```
+
+commit hash# 1b6dc157984470949b4146383cd33ea3cc613174
+
+```
+
+# Tasks
+
+```
+
 1. Using postman, execute API to see if data is returned.
 2. If data is returned idenify format of data.
 3. Save some/all data to use with supertest/jest
+
 ```
 
 # Open-banking V2.2 returned data format
 
 ```
+
 Object definition:
 
 meta: {
-        LastUpdated: 2022-03-28T14:27:34.354Z,
-        TotalResults: 807,
-        Agreement: Use of the APIs and any related data will be subject to the terms of the Open Licence and subject to terms and conditions,
-        License: https://www.openbanking.org.uk/open-licence,
-        TermsOfUse: https://www.openbanking.org.uk/terms
-    },
-    data: [
-        {
-            Brand: [
-                {
-                    BrandName:
-                    Branch: [
-                        {
-                            Identification:
-                            SequenceNumber:
-                            Name:
-                            Type:
-                            CustomerSegment: [],
-                            Availability: {
-                                StandardAvailability: {
-                                    Day: [
-                                        {
-                                            Name:
-                                            OpeningHours: [
-                                                {
-                                                    OpeningTime:
-                                                    ClosingTime:
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            },
-                            ContactInfo: [
-                                {
-                                    ContactType:
-                                    ContactContent:
-                                }
-                            ],
-                            PostalAddress: {
-                                AddressLine: [],
-                                TownName:
-                                CountrySubDivision: [],
-                                Country:
-                                PostCode:
-                                GeoLocation: {
-                                    GeographicCoordinates: {
-                                        Latitude:
-                                        Longitude:
-                                    }
-                                }
-                            }
-                        },
-                }
-        }
+LastUpdated: 2022-03-28T14:27:34.354Z,
+TotalResults: 807,
+Agreement: Use of the APIs and any related data will be subject to the terms of the Open Licence and subject to terms and conditions,
+License: https://www.openbanking.org.uk/open-licence,
+TermsOfUse: https://www.openbanking.org.uk/terms
+},
+data: [
+{
+Brand: [
+{
+BrandName:
+Branch: [
+{
+Identification:
+SequenceNumber:
+Name:
+Type:
+CustomerSegment: [],
+Availability: {
+StandardAvailability: {
+Day: [
+{
+Name:
+OpeningHours: [
+{
+OpeningTime:
+ClosingTime:
+}
+]
+}
+]
+}
+},
+ContactInfo: [
+{
+ContactType:
+ContactContent:
+}
+],
+PostalAddress: {
+AddressLine: [],
+TownName:
+CountrySubDivision: [],
+Country:
+PostCode:
+GeoLocation: {
+GeographicCoordinates: {
+Latitude:
+Longitude:
+}
+}
+}
+},
+}
+}
 
 Sample data:
-    meta: {
-        LastUpdated: 2022-03-28T14:27:34.354Z,
-        TotalResults: 807,
-        Agreement: Use of the APIs and any related data will be subject to the terms of the Open Licence and subject to terms and conditions,
-        License: https://www.openbanking.org.uk/open-licence,
-        TermsOfUse: https://www.openbanking.org.uk/terms
-    },
-    data: [
-        {
-            Brand: [
-                {
-                    BrandName: Lloyds Bank,
-                    Branch: [
-                        {
-                            Identification: 77952700,
-                            SequenceNumber: 00,
-                            Name: STROOD,
-                            Type: Physical,
-                            CustomerSegment: [
-                                Personal,
-                                Business
-                            ],
-                            Availability: {
-                                StandardAvailability: {
-                                    Day: [
-                                        {
-                                            Name: Monday,
-                                            OpeningHours: [
-                                                {
-                                                    OpeningTime: 09:00,
-                                                    ClosingTime: 15:30
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            Name: Tuesday,
-                                            OpeningHours: [
-                                                {
-                                                    OpeningTime: 09:00,
-                                                    ClosingTime: 15:30
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            Name: Wednesday,
-                                            OpeningHours: [
-                                                {
-                                                    OpeningTime: 09:00,
-                                                    ClosingTime: 15:30
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            Name: Thursday,
-                                            OpeningHours: [
-                                                {
-                                                    OpeningTime: 09:00,
-                                                    ClosingTime: 15:30
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            Name: Friday,
-                                            OpeningHours: [
-                                                {
-                                                    OpeningTime: 09:00,
-                                                    ClosingTime: 15:30
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            },
-                            ContactInfo: [
-                                {
-                                    ContactType: Phone,
-                                    ContactContent: +44-3456021997
-                                }
-                            ],
-                            PostalAddress: {
-                                AddressLine: [
-                                    129-131 HIGH STREET
-                                ],
-                                TownName: ROCHESTER,
-                                CountrySubDivision: [
-                                    KENT
-                                ],
-                                Country: GB,
-                                PostCode: ME2 4TW,
-                                GeoLocation: {
-                                    GeographicCoordinates: {
-                                        Latitude: 51.39584,
-                                        Longitude: 0.4939
-                                    }
-                                }
-                            }
-                        },
-                }
-        }
-```
-
-# Create simple server and test with jest and supertest
+meta: {
+LastUpdated: 2022-03-28T14:27:34.354Z,
+TotalResults: 807,
+Agreement: Use of the APIs and any related data will be subject to the terms of the Open Licence and subject to terms and conditions,
+License: https://www.openbanking.org.uk/open-licence,
+TermsOfUse: https://www.openbanking.org.uk/terms
+},
+data: [
+{
+Brand: [
+{
+BrandName: Lloyds Bank,
+Branch: [
+{
+Identification: 77952700,
+SequenceNumber: 00,
+Name: STROOD,
+Type: Physical,
+CustomerSegment: [
+Personal,
+Business
+],
+Availability: {
+StandardAvailability: {
+Day: [
+{
+Name: Monday,
+OpeningHours: [
+{
+OpeningTime: 09:00,
+ClosingTime: 15:30
+}
+]
+},
+{
+Name: Tuesday,
+OpeningHours: [
+{
+OpeningTime: 09:00,
+ClosingTime: 15:30
+}
+]
+},
+{
+Name: Wednesday,
+OpeningHours: [
+{
+OpeningTime: 09:00,
+ClosingTime: 15:30
+}
+]
+},
+{
+Name: Thursday,
+OpeningHours: [
+{
+OpeningTime: 09:00,
+ClosingTime: 15:30
+}
+]
+},
+{
+Name: Friday,
+OpeningHours: [
+{
+OpeningTime: 09:00,
+ClosingTime: 15:30
+}
+]
+}
+]
+}
+},
+ContactInfo: [
+{
+ContactType: Phone,
+ContactContent: +44-3456021997
+}
+],
+PostalAddress: {
+AddressLine: [
+129-131 HIGH STREET
+],
+TownName: ROCHESTER,
+CountrySubDivision: [
+KENT
+],
+Country: GB,
+PostCode: ME2 4TW,
+GeoLocation: {
+GeographicCoordinates: {
+Latitude: 51.39584,
+Longitude: 0.4939
+}
+}
+}
+},
+}
+}
 
 ```
+
+## Simple server and test with jest and supertest
+
+```
+
 commit hash f4e086cf53811e6ad52129d5d2ca7e975dae2566
-```
-
-# tasks
 
 ```
 
-1 Create express app
-2 Create jest/supertest test
-3 Confirm test executes successfully
-
+# Tasks
 ```
+
+1. Create express app
+2. Create jest/supertest test
+3. Confirm test executes successfully
 
 ## Create server to retrieve all branches and test with jest and supertest
 
 ```
-1 Create Axios request
-2 Use postman to get test data from api
-3 Create jest/supertest test
-4 Confirm test executes successfully
+commit hash# 463b41da25c36c8f20c85f736830f1d81afbbf7c
 ```
+
+# Tasks
+
+1. Create Axios request
+2. Use postman to get test data from api
+3. Create jest/supertest test
+4. Confirm test executes successfully
 
 ## Update server to allow branch selection by location (TownName || CountrySubDivision) using header.lbg-txn-branch-location
 
-1 filter data to only return data where location (Town || CountrySubDivision) = header.lbg-txn-branch-location
-2 Use postman to get branches with location header lbg-txn-branch-location = London from api
-3 use data retuned from postman for equality jest/supertest
-4 Create jest/supertest test
-5 Confirm test executes successfully
-6 Use postman to get branches with location header lbg-txn-branch-location = Watford from api
-7 use data retuned from postman for equality test jest/supertest
-8 Create jest/supertest fails
+```
+commit hash# 4b0aeccd3555c3cf3b8403d41c39a34afb366c5a
+```
 
-```
-## Update server to allow branch selection by location
-```
+# Tasks
+
+1. filter data to only return data where location (Town || CountrySubDivision) = header.lbg-txn-branch-location
+2. Use postman to get branches with location header lbg-txn-branch-location = London from api
+3. use data retuned from postman for equality jest/supertest
+4. Create jest/supertest test
+5. Confirm test executes successfully
+6. Use postman to get branches with location header lbg-txn-branch-location = Watford from api
+7. use data retuned from postman for equality test jest/supertest
+8. Create jest/supertest fails
+
+## Verify header lbg-txn-branch-location is a string and not null
+
+commit hash#
+
+# Tasks
+
+1. Create middleware to validate headers["lbg-txn-branch-location"] is string and not null
+2. Use Joi schema to validate lbg-txn-branch-location as tring and not null
+3. Create jest/supertest tests to test both valid and non valid coombinations
