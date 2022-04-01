@@ -206,7 +206,11 @@ Sample data:
 # Create simple server and test with jest and supertest
 
 ```
+commit hash f4e086cf53811e6ad52129d5d2ca7e975dae2566
+```
+
 # tasks
+
 ```
 
 1 Create express app
@@ -215,4 +219,11 @@ Sample data:
 
 ```
 
+# Create server to retrieve all branches and test with jest and supertest
+
+```
+1 Create Axios request
+2 Use postman to get test data from api
+3 Create jest/supertest test
+4 Confirm test executes successfully
 ```
