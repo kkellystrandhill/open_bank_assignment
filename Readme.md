@@ -23,13 +23,15 @@ This code should be available in Git repo for review with good branching hygiene
 commit hash# eea7652bd6b46739af8beba5c95915472468c4c2
 ```
 
+## Test Open-banking V2.2 API is available
+
 # project with task definition readme commit
 
 ```
 commit hash# eea7652bd6b46739af8beba5c95915472468c4c2
 ```
 
-## Test Open-banking V2.2 API is available
+# tasks
 
 ```
 1. Using postman, execute API to see if data is returned.
@@ -199,4 +201,18 @@ Sample data:
                         },
                 }
         }
+```
+
+# Create simple server and test with jest and supertest
+
+```
+# tasks
+```
+
+1 Create express app
+2 Create jest/supertest test
+3 Confirm test executes successfully
+
+```
+
 ```
