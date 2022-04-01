@@ -1,5 +1,8 @@
-import app from "../app";
+import app, { getBranches } from "../app";
 import request from "supertest";
+import axios from "axios";
+
+jest.mock("axios");
 
 describe("Test get all branches with header.lbg-txn-branch-location = London GET /", () => {
   jest.setTimeout(10000);
@@ -29,6 +32,37 @@ describe("Test get all branches with header.lbg-txn-branch-location = 999 GET /"
       .set("lbg-txn-branch-location", 999);
     expect(response.body).toEqual(branchesLondon());
     expect(response.statusCode).toBe(200);
+  });
+});
+
+describe("Test mock axios response GET /", () => {
+  jest.setTimeout(10000);
+  test("It should return all watford branches", async () => {
+    let branches = {
+      data: {
+        data: [
+          {
+            Brand: [
+              {
+                Branch: [],
+              },
+            ],
+          },
+        ],
+      },
+    };
+    branches.data.data[0].Brand[0].Branch = branchesWaford();
+    axios.get.mockResolvedValueOnce(branches);
+
+    // when
+    const response = await getBranches({
+      headers: { "lbg-txn-branch-location": "watford" },
+    });
+
+    expect(axios.get).toHaveBeenCalledWith(
+      "https://api.lloydsbank.com/open-banking/v2.2/branches"
+    );
+    expect(response).toEqual(branchesWaford());
   });
 });
 
