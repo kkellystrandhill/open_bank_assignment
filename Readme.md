@@ -219,11 +219,26 @@ commit hash f4e086cf53811e6ad52129d5d2ca7e975dae2566
 
 ```
 
-# Create server to retrieve all branches and test with jest and supertest
+## Create server to retrieve all branches and test with jest and supertest
 
 ```
 1 Create Axios request
 2 Use postman to get test data from api
 3 Create jest/supertest test
 4 Confirm test executes successfully
+```
+
+## Update server to allow branch selection by location (TownName || CountrySubDivision) using header.lbg-txn-branch-location
+
+1 filter data to only return data where location (Town || CountrySubDivision) = header.lbg-txn-branch-location
+2 Use postman to get branches with location header lbg-txn-branch-location = London from api
+3 use data retuned from postman for equality jest/supertest
+4 Create jest/supertest test
+5 Confirm test executes successfully
+6 Use postman to get branches with location header lbg-txn-branch-location = Watford from api
+7 use data retuned from postman for equality test jest/supertest
+8 Create jest/supertest fails
+
+```
+## Update server to allow branch selection by location
 ```
