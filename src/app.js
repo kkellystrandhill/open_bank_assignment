@@ -25,8 +25,7 @@ export const getBranches = async (req, _) => {
     const response = await axios.get(
       "https://api.lloydsbank.com/open-banking/v2.2/branches"
     );
-
-    let branches = await response.data.data[0].Brand[0].Branch;
+    let branches = (await response?.data?.data[0]?.Brand[0]?.Branch) || [];
 
     for (let branch of branches) {
       branchPostalAddress = branch.PostalAddress;

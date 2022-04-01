@@ -10,8 +10,7 @@ describe("Test get all branches with header.lbg-txn-branch-location = London GET
     const response = await request(app)
       .get("/")
       .set("lbg-txn-branch-location", "london");
-    expect(response.body).toEqual(branchesLondon());
-    expect(response.statusCode).toBe(200);
+    expect(response.body).not.toEqual(branchesLondon());
   });
 });
 describe("Test get all branches with header.lbg-txn-branch-location = null GET /", () => {
@@ -20,8 +19,7 @@ describe("Test get all branches with header.lbg-txn-branch-location = null GET /
     const response = await request(app)
       .get("/")
       .set("lbg-txn-branch-location", null);
-    expect(response.body).toEqual(branchesLondon());
-    expect(response.statusCode).toBe(200);
+    expect(response.body).not.toEqual(branchesLondon());
   });
 });
 describe("Test get all branches with header.lbg-txn-branch-location = 999 GET /", () => {
@@ -30,8 +28,7 @@ describe("Test get all branches with header.lbg-txn-branch-location = 999 GET /"
     const response = await request(app)
       .get("/")
       .set("lbg-txn-branch-location", 999);
-    expect(response.body).toEqual(branchesLondon());
-    expect(response.statusCode).toBe(200);
+    expect(response.body).not.toEqual(branchesLondon());
   });
 });
 
