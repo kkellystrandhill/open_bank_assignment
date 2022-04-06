@@ -5,7 +5,6 @@ import locationMiddleware from "../middleware/locationMiddleware";
 import app from "../app";
 import getBranches from "../functions/getBranches";
 import branchMockData from "./branchesMockResponse";
-import errorLogger from "../errorLogger/errorLogger";
 
 const lbgTxnBranchLocation = "lbg-txn-branch-location";
 let watfordBranches = {
@@ -63,45 +62,12 @@ describe("Get branches endpoint test suite", () => {
   });
 
   // Test functions
-  it("Test error fails if not passed object", async () => {
-    let error = null;
-    try {
-      await errorLogger();
-    } catch (e) {
-      console.log("error = ", e);
-      error = e;
-    }
-    expect(error).not.toEqual(null);
-  });
-
-  it("Test error fails if passed wrong object format", async () => {
-    let error = null;
-    try {
-      await errorLogger({});
-    } catch (e) {
-      console.log("error = ", e);
-      error = e;
-    }
-    expect(error).not.toEqual(null);
-  });
-  it("Test error logger passes when passed correct object format", async () => {
-    let errorTest = null;
-    try {
-      let error = { name: "UserError", message: "Error message" };
-      await errorLogger({ error });
-    } catch (e) {
-      console.log("error = ", e);
-      errorTest = e;
-    }
-    expect(errorTest).toEqual(null);
-  });
-
   it("Test getBranches executes, mocking req and res", async () => {
     const { res } = getMockRes({
       data: watfordBranches,
     });
     const req = getMockReq({ headers: { [lbgTxnBranchLocation]: "watford" } });
-    await getBranches({ req });
+    await getBranches({ reqHeader: req.headers });
     expect(res.data).toEqual(watfordBranches);
   });
 
@@ -143,8 +109,8 @@ describe("Get branches endpoint test suite", () => {
     let response;
     try {
       response = await getBranches({
-        req: {
-          headers: { [lbgTxnBranchLocation]: "watford" },
+        reqHeader: {
+          location: "watford",
         },
       });
     } catch (e) {
@@ -153,7 +119,7 @@ describe("Get branches endpoint test suite", () => {
         name: e.name,
         message: e.message,
       };
-      errorLogger({ error });
+      throw error;
     }
     expect(axios.get).toHaveBeenCalledWith(
       "https://api.lloydsbank.com/open-banking/v2.2/branches"

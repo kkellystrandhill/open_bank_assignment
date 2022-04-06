@@ -1,13 +1,8 @@
 import axios from "axios";
-import errorLogger from "../errorLogger/errorLogger.js";
 
-export default async ({ req: req }) => {
-  let location,
-    locationHeader = "lbg-txn-branch-location",
-    foundBranches = [];
+export default async ({ reqBody, reqHeader: { location } }) => {
+  const foundBranches = [];
   try {
-    location = req.headers[locationHeader];
-
     let branches, branchPostalAddress, townName, countrySubDivision;
 
     try {
@@ -16,11 +11,10 @@ export default async ({ req: req }) => {
       );
       branches = (await response?.data?.data[0]?.Brand[0]?.Branch) || [];
     } catch (error) {
-      errorLogger({ error });
       throw Error(error);
     }
     try {
-      for (let branch of branches) {
+      for (const branch of branches) {
         branchPostalAddress = branch.PostalAddress;
         townName = branchPostalAddress?.TownName
           ? branchPostalAddress.TownName.toLowerCase().trim()
@@ -31,7 +25,7 @@ export default async ({ req: req }) => {
         }
         countrySubDivision = branchPostalAddress?.CountrySubDivision;
         if (Array.isArray(countrySubDivision)) {
-          for (let subDivision of countrySubDivision) {
+          for (const subDivision of countrySubDivision) {
             if (subDivision.toLowerCase().trim() === location) {
               foundBranches.push(branch);
               break;
@@ -40,11 +34,9 @@ export default async ({ req: req }) => {
         }
       }
     } catch (error) {
-      errorLogger({ error });
       throw Error(error);
     }
   } catch (error) {
-    errorLogger({ error });
     throw Error(error);
   }
   return foundBranches;

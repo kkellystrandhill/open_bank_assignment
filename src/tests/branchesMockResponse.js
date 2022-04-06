@@ -1,4 +1,4 @@
-export default ({ location: location }) => {
+export default ({ location }) => {
   let data = "";
   switch (location) {
     case "watford":

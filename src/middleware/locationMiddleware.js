@@ -27,17 +27,20 @@ const schema = Joi.string()
   });
 
 export default (req, res, next) => {
-  const lbgTxnBranchLocation = "lbg-txn-branch-location";
-  if (!(lbgTxnBranchLocation in req.headers)) {
-    let error = new Error("lbg-txn-branch-location does not exist on header");
-    return next(error);
+  try {
+    const lbgTxnBranchLocation = "lbg-txn-branch-location";
+    if (!(lbgTxnBranchLocation in req.headers)) {
+      throw new Error("lbg-txn-branch-location does not exist on header");
+    }
+    const location = req.headers?.[lbgTxnBranchLocation]
+      .toString()
+      .toLowerCase()
+      .trim();
+    const { error } = schema.validate(location);
+    if (error) throw error;
+    req.headers[lbgTxnBranchLocation] = location;
+    next();
+  } catch (e) {
+    next(e);
   }
-  let location = req.headers?.[lbgTxnBranchLocation]
-    .toString()
-    .toLowerCase()
-    .trim();
-  const { error } = schema.validate(location);
-  if (error) return next(error);
-  req.headers[lbgTxnBranchLocation] = location;
-  next();
 };

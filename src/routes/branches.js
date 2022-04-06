@@ -1,11 +1,10 @@
 import express from "express";
 import locationMiddleware from "../middleware/locationMiddleware.js";
-import getBranches from "../functions/getBranches.js";
+import getBranchesController from "../controllers/getBranchesController.js";
 
 const router = express.Router();
 
-router.get("/", locationMiddleware, async (req, res) => {
-  const foundBranches = await getBranches({ req });
-  return res.send(foundBranches);
+router.get("/", locationMiddleware, async (req, res, next) => {
+  getBranchesController(req, res, next);
 });
 export default router;
