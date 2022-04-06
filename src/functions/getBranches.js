@@ -9,9 +9,8 @@ export default async ({ reqBody, reqHeader: { location } }) => {
       const response = await axios.get(HTTPS_URL);
       branches = (await response?.data?.data[0]?.Brand[0]?.Branch) || [];
     } catch (error) {
-      error.failedValidation = true;
-      error.paramName = "HTTP_FAILURE";
-      error.message = `Get from ${HTTPS_URL} failed.`;
+      error.message = "HTTP_FAILURE";
+      error.message.err = `Get from ${HTTPS_URL} failed.`;
       throw Error(error);
     }
     try {
@@ -35,15 +34,13 @@ export default async ({ reqBody, reqHeader: { location } }) => {
         }
       }
     } catch (error) {
-      error.failedValidation = true;
-      error.paramName = "LOOP_FAILURE";
-      error.message = `Looping data from ${HTTPS_URL} failed.`;
+      error.message = "LOOP_FAILURE";
+      error.message.err = `Looping data from ${HTTPS_URL} failed.`;
       throw Error(error);
     }
   } catch (error) {
-    error.failedValidation = true;
-    error.paramName = "GET_BRANCHES_FAILURE";
-    error.message = `Getting branch data for locaton ${location} from ${HTTPS_URL} failed.`;
+    error.message = "GET_BRANCHES_FAILURE";
+    error.message.err = `Getting branch data for locaton ${location} from ${HTTPS_URL} failed.`;
     throw Error(error);
   }
   return foundBranches;

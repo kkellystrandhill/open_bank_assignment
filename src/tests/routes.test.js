@@ -116,8 +116,8 @@ describe("Get branches endpoint test suite", () => {
     } catch (e) {
       response = "";
       const error = {
-        name: e.name,
-        message: e.message,
+        message: "MOCK_GET_FAILED",
+        message.err: "Test mock downstream axios call",
       };
       throw error;
     }
