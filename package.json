@@ -1,10 +1,17 @@
 {
   "name": "open_bank_assignment",
+  "type": "module",
   "version": "1.0.0",
   "description": "Test access to Lloyds bank open accesss api v2.2",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "author": "Kieran Kelly",
   "license": "ISC",
@@ -14,6 +21,8 @@
     "joi": "^17.6.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.17.7",
+    "@jest-mock/express": "^1.4.5",
     "jest": "^27.5.1",
     "supertest": "^6.2.2"
   }
